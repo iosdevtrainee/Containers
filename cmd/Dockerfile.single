@@ -1,0 +1,17 @@
+FROM golang:1.12.0-alpine
+
+RUN mkdir /app && apk add --no-cache git
+
+# copy all source files to app folder
+ADD . /app
+
+# make app the current directory all 
+# subsequent commands will be execute here
+
+WORKDIR /app
+
+# create the binary executable 
+
+RUN go download && go build -o main  
+
+CMD ["/app/main"]
